@@ -59,6 +59,8 @@ function App() {
           setInitialPuzzle(e.target.value.split(","))
         }}/>
         <Puzzle8 puzzleData={puzzle}/>
+        {
+              !loading &&
         <button onClick={() => {
             if(checkValue()){
               setPuzzle(initialPuzzle)
@@ -69,17 +71,20 @@ function App() {
         }>
           Carregar valores
         </button>
+        }
         {
           valid &&
           <>
-            <button onClick={loadResolve}>
-              {
-                loading === true ?
-                <ReactLoading type={"spinningBubbles"} color={"#FFF"} height={'10px'} width={'10px'} /> : 
-                "Resolver"
+            
+              <button onClick={loadResolve}>
+                {
+                  loading === true ?
+                  <ReactLoading type={"spinningBubbles"} color={"#FFF"} height={'10px'} width={'10px'} /> : 
+                  "Resolver"
 
-              }
-            </button>
+                }
+              </button>
+            
             {
               (!loading && nosSolution) &&
               <h3>O padrão inserido faz parte de um conjunto de padrões que não tem solução</h3>
